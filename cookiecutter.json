@@ -1,0 +1,7 @@
+{
+  "service": "MyService",
+  "account": "MyAccount",
+  "project_dirname": "{{ cookiecutter.service }}-{{ cookiecutter.account }}",
+  "project_name": "{{ cookiecutter.service }} {{ cookiecutter.account }}",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}"
+}
