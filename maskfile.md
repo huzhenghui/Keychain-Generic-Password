@@ -16,7 +16,7 @@
 ```bash
 SERVICE="${service:-MyService}"
 ACCOUNT="${account:-MyAccount}"
-EXECUTABLE="./executable-output/KeyChain-Password-${SERVICE}-${ACCOUNT}"
+EXECUTABLE="${MASKFILE_DIR}/executable-output/KeyChain-Password-${SERVICE}-${ACCOUNT}"
 echo "service = ${SERVICE}"
 echo "account = ${ACCOUNT}"
 cookiecutter \
@@ -27,7 +27,7 @@ cookiecutter \
     "${MASKFILE_DIR}" \
     service="${SERVICE}" \
     account="${ACCOUNT}"
-swiftc -o "${EXECUTABLE}" -emit-executable ./swift-output/${SERVICE}-${ACCOUNT}/KeyChain-Password-${SERVICE}-${ACCOUNT}.swift
+swiftc -o "${EXECUTABLE}" -emit-executable "${MASKFILE_DIR}/swift-output/${SERVICE}-${ACCOUNT}/KeyChain-Password-${SERVICE}-${ACCOUNT}.swift"
 sudo chown root "${EXECUTABLE}"
 sudo chmod 744 "${EXECUTABLE}"
 ls -l "${EXECUTABLE}"
@@ -49,7 +49,7 @@ ls -l "${EXECUTABLE}"
 ```bash
 SERVICE="${service:-MyService}"
 ACCOUNT="${account:-MyAccount}"
-EXECUTABLE="./executable-output/KeyChain-Password-${SERVICE}-${ACCOUNT}"
+EXECUTABLE="${MASKFILE_DIR}/executable-output/KeyChain-Password-${SERVICE}-${ACCOUNT}"
 echo "service = ${SERVICE}"
 echo "account = ${ACCOUNT}"
 cookiecutter \
@@ -60,7 +60,7 @@ cookiecutter \
     https://github.com/huzhenghui/Keychain-Generic-Password \
     service="${SERVICE}" \
     account="${ACCOUNT}"
-swiftc -o "${EXECUTABLE}" -emit-executable ./swift-output/${SERVICE}-${ACCOUNT}/KeyChain-Password-${SERVICE}-${ACCOUNT}.swift
+swiftc -o "${EXECUTABLE}" -emit-executable "${MASKFILE_DIR}/swift-output/${SERVICE}-${ACCOUNT}/KeyChain-Password-${SERVICE}-${ACCOUNT}.swift"
 sudo chown root "${EXECUTABLE}"
 sudo chmod 744 "${EXECUTABLE}"
 ls -l "${EXECUTABLE}"
@@ -82,7 +82,7 @@ ls -l "${EXECUTABLE}"
 ```bash
 SERVICE="${service:-MyService}"
 ACCOUNT="${account:-MyAccount}"
-EXECUTABLE="./executable-output/KeyChain-Password-${SERVICE}-${ACCOUNT}"
+EXECUTABLE="${MASKFILE_DIR}/executable-output/KeyChain-Password-${SERVICE}-${ACCOUNT}"
 fifo="$(mktemp).fifo"
 mkfifo "${fifo}"
 detach -- bash -c "sudo ${EXECUTABLE} > ${fifo}"
