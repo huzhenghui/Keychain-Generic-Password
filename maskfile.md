@@ -2,6 +2,10 @@
 
 ## local
 
+> Generic executable by local template
+
+<!-- markdownlint-disable MD036 -->
+
 **OPTIONS**
 
 - service
@@ -12,6 +16,8 @@
   - flags: -a --account
   - type: string
   - desc: account
+
+<!-- markdownlint-enable MD036 -->
 
 ```bash
 SERVICE="${service:-MyService}"
@@ -35,6 +41,10 @@ ls -l "${EXECUTABLE}"
 
 ## git
 
+> Generic executable by git template
+
+<!-- markdownlint-disable MD036 -->
+
 **OPTIONS**
 
 - service
@@ -45,6 +55,8 @@ ls -l "${EXECUTABLE}"
   - flags: -a --account
   - type: string
   - desc: account
+
+<!-- markdownlint-enable MD036 -->
 
 ```bash
 SERVICE="${service:-MyService}"
@@ -68,6 +80,10 @@ ls -l "${EXECUTABLE}"
 
 ## get
 
+> Get password by generated executable
+
+<!-- markdownlint-disable MD036 -->
+
 **OPTIONS**
 
 - service
@@ -79,6 +95,8 @@ ls -l "${EXECUTABLE}"
   - type: string
   - desc: account
 
+<!-- markdownlint-enable MD036 -->
+
 ```bash
 SERVICE="${service:-MyService}"
 ACCOUNT="${account:-MyAccount}"
@@ -87,4 +105,29 @@ fifo="$(mktemp).fifo"
 mkfifo "${fifo}"
 detach -- bash -c "sudo ${EXECUTABLE} > ${fifo}"
 cat "${fifo}"
+```
+
+## generate-ghq-get-code
+
+> Generate code for use in script
+
+<!-- markdownlint-disable MD036 -->
+
+**OPTIONS**
+
+- service
+  - flags: -s --service
+  - type: string
+  - desc: service
+- account
+  - flags: -a --account
+  - type: string
+  - desc: account
+
+<!-- markdownlint-enable MD036 -->
+
+```bash
+SERVICE="${service:-MyService}"
+ACCOUNT="${account:-MyAccount}"
+echo mask --maskfile '"$(ghq list --full-path https://github.com/huzhenghui/Keychain-Generic-Password)/maskfile.md"' get --service "${SERVICE}" --account "${ACCOUNT}"
 ```
